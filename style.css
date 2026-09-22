@@ -1,0 +1,1772 @@
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+:root {
+
+    --cream: #FFF9ED;
+    --cream-dark: #F5EBD6;
+
+    --white: #FFFFFF;
+
+    --green: #284D36;
+    --green-light: #4E7A4B;
+    --green-soft: #E5EEDB;
+
+    --yellow: #FFCA45;
+    --yellow-light: #FFF0B3;
+    --yellow-dark: #E6A729;
+
+    --text: #29362C;
+    --text-secondary: #59685B;
+
+    --border: #E5E8DD;
+
+    --font-title:
+        "Fraunces",
+        Georgia,
+        serif;
+
+    --font-body:
+        "Nunito",
+        Arial,
+        sans-serif;
+
+    --font-ui:
+        "DM Sans",
+        Arial,
+        sans-serif;
+
+    --ease:
+        cubic-bezier(.22, 1, .36, 1);
+
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*,
+*::before,
+*::after {
+
+    box-sizing: border-box;
+
+}
+
+html {
+
+    min-height: 100%;
+
+}
+
+body {
+
+    margin: 0;
+
+    min-width: 320px;
+
+    min-height: 100svh;
+
+    font-family: var(--font-body);
+
+    color: var(--text);
+
+    background: var(--cream);
+
+    overflow-x: hidden;
+
+}
+
+button {
+
+    font: inherit;
+
+    cursor: pointer;
+
+}
+
+button:focus-visible {
+
+    outline: 3px solid var(--yellow-dark);
+
+    outline-offset: 4px;
+
+}
+
+.hidden {
+
+    display: none !important;
+
+}
+
+
+/* =========================================================
+   ESCENAS
+========================================================= */
+
+.scene {
+
+    display: none;
+
+    width: 100%;
+
+    min-height: 100svh;
+
+    position: relative;
+
+    isolation: isolate;
+
+}
+
+.scene.active {
+
+    display: flex;
+
+    animation:
+        sceneEnter
+        .7s
+        var(--ease)
+        both;
+
+}
+
+@keyframes sceneEnter {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(12px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+    }
+
+}
+
+
+/* =========================================================
+   PARTÍCULAS
+========================================================= */
+
+.ambient-particles {
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    z-index: 20;
+
+}
+
+.ambient-particle {
+
+    position: absolute;
+
+    width: 4px;
+
+    height: 4px;
+
+    border-radius: 50%;
+
+    background: var(--yellow-dark);
+
+    opacity: .35;
+
+    animation:
+        particleFloat
+        var(--duration)
+        ease-in-out
+        infinite alternate;
+
+}
+
+@keyframes particleFloat {
+
+    from {
+
+        transform: translateY(0);
+
+        opacity: .15;
+
+    }
+
+    to {
+
+        transform: translateY(-35px);
+
+        opacity: .5;
+
+    }
+
+}
+
+
+/* =========================================================
+   BOTONES
+========================================================= */
+
+.button {
+
+    min-height: 56px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    padding: 14px 25px;
+
+    border: 0;
+
+    border-radius: 999px;
+
+    font-family: var(--font-body);
+
+    font-size: .95rem;
+
+    font-weight: 800;
+
+    text-decoration: none;
+
+    transition:
+        transform .3s var(--ease),
+        background .3s ease,
+        box-shadow .3s ease;
+
+}
+
+.button:hover {
+
+    transform: translateY(-3px);
+
+}
+
+.button:active {
+
+    transform: scale(.97);
+
+}
+
+.button span {
+
+    font-size: 1.3rem;
+
+    line-height: 1;
+
+}
+
+.button--primary {
+
+    color: var(--white);
+
+    background: var(--green);
+
+    box-shadow:
+        0 12px 25px
+        rgba(40, 77, 54, .16);
+
+}
+
+.button--primary:hover {
+
+    background: #356345;
+
+    box-shadow:
+        0 16px 30px
+        rgba(40, 77, 54, .22);
+
+}
+
+
+/* =========================================================
+   BIENVENIDA
+========================================================= */
+
+.scene--welcome {
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 35px 20px;
+
+    background:
+
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(255, 202, 69, .18),
+            transparent 45%
+        ),
+
+        var(--cream);
+
+}
+
+.welcome-card {
+
+    width: min(620px, 100%);
+
+    padding:
+        clamp(28px, 6vw, 55px);
+
+    border: 1px solid var(--border);
+
+    border-radius: 32px;
+
+    background: var(--white);
+
+    box-shadow:
+        0 25px 80px
+        rgba(40, 77, 54, .07);
+
+    text-align: center;
+
+}
+
+.welcome-icon {
+
+    width: 90px;
+
+    height: 90px;
+
+    display: grid;
+
+    place-items: center;
+
+    margin: 0 auto 20px;
+
+    border-radius: 50%;
+
+    background: var(--yellow-light);
+
+    font-size: 3rem;
+
+    animation:
+        welcomeFloat
+        3s
+        ease-in-out
+        infinite;
+
+}
+
+@keyframes welcomeFloat {
+
+    50% {
+
+        transform: translateY(-7px);
+
+    }
+
+}
+
+.eyebrow {
+
+    display: inline-block;
+
+    color: var(--green-light);
+
+    font-family: var(--font-ui);
+
+    font-size: .7rem;
+
+    font-weight: 700;
+
+    letter-spacing: .17em;
+
+}
+
+.welcome-card h1 {
+
+    margin: 20px 0;
+
+    font-family: var(--font-title);
+
+    font-size:
+        clamp(2.5rem, 7vw, 4.4rem);
+
+    font-weight: 500;
+
+    line-height: 1.12;
+
+    letter-spacing: -.04em;
+
+}
+
+.welcome-card h1 span {
+
+    display: block;
+
+    color: var(--green-light);
+
+}
+
+.welcome-description {
+
+    max-width: 480px;
+
+    margin: 0 auto 30px;
+
+    color: var(--text-secondary);
+
+    font-size: 1rem;
+
+    line-height: 1.85;
+
+}
+
+.welcome-signature {
+
+    margin: 22px 0 0;
+
+    color: var(--text-secondary);
+
+    font-size: .8rem;
+
+}
+
+
+/* =========================================================
+   CRECIMIENTO
+========================================================= */
+
+.scene--growth {
+
+    align-items: center;
+
+    padding:
+        clamp(24px, 4vw, 55px)
+        clamp(18px, 4vw, 55px);
+
+    background:
+
+        radial-gradient(
+            circle at 75% 40%,
+            rgba(255, 202, 69, .15),
+            transparent 35%
+        ),
+
+        var(--cream);
+
+}
+
+.growth-container {
+
+    width: min(1180px, 100%);
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 1fr);
+
+    gap: clamp(25px, 5vw, 70px);
+
+    align-items: center;
+
+}
+
+
+/* =========================================================
+   TEXTO
+========================================================= */
+
+.growth-content {
+
+    position: relative;
+
+    z-index: 5;
+
+}
+
+.section-label {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 22px;
+
+    color: var(--green-light);
+
+    font-family: var(--font-ui);
+
+    font-size: .7rem;
+
+    font-weight: 700;
+
+    letter-spacing: .14em;
+
+}
+
+.section-label__line {
+
+    width: 28px;
+
+    height: 2px;
+
+    background: var(--yellow-dark);
+
+}
+
+.growth-title {
+
+    max-width: 570px;
+
+    margin: 0;
+
+    font-family: var(--font-title);
+
+    font-size:
+        clamp(2.8rem, 4.8vw, 4.8rem);
+
+    font-weight: 500;
+
+    line-height: 1.13;
+
+    letter-spacing: -.045em;
+
+}
+
+.growth-title span {
+
+    display: block;
+
+    color: var(--green-light);
+
+}
+
+.growth-description {
+
+    max-width: 520px;
+
+    min-height: 100px;
+
+    margin: 22px 0 25px;
+
+    color: var(--text-secondary);
+
+    font-size: .98rem;
+
+    font-weight: 600;
+
+    line-height: 1.8;
+
+}
+
+
+/* =========================================================
+   TARJETA DE ETAPA
+========================================================= */
+
+.stage-card {
+
+    max-width: 520px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 17px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 18px;
+
+    background: var(--white);
+
+    box-shadow:
+        0 8px 25px
+        rgba(40, 77, 54, .04);
+
+}
+
+.stage-card__icon {
+
+    flex-shrink: 0;
+
+    width: 48px;
+
+    height: 48px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 14px;
+
+    color: var(--green);
+
+    background: var(--yellow-light);
+
+    font-size: 1.7rem;
+
+}
+
+.stage-card__label {
+
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: var(--green-light);
+
+    font-family: var(--font-ui);
+
+    font-size: .67rem;
+
+    font-weight: 700;
+
+    letter-spacing: .1em;
+
+}
+
+.stage-card__content p {
+
+    margin: 0;
+
+    color: var(--text);
+
+    font-size: .93rem;
+
+    font-weight: 700;
+
+    line-height: 1.5;
+
+}
+
+
+/* =========================================================
+   PROGRESO
+========================================================= */
+
+.progress {
+
+    max-width: 520px;
+
+    margin: 25px 0;
+
+}
+
+.progress__header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 12px;
+
+    margin-bottom: 10px;
+
+    color: var(--text-secondary);
+
+    font-size: .8rem;
+
+    font-weight: 800;
+
+}
+
+.progress__header strong {
+
+    color: var(--green);
+
+}
+
+.progress__track {
+
+    height: 10px;
+
+    overflow: hidden;
+
+    border-radius: 999px;
+
+    background: #E2E7D9;
+
+}
+
+.progress__fill {
+
+    width: 0%;
+
+    height: 100%;
+
+    border-radius: inherit;
+
+    background:
+        linear-gradient(
+            90deg,
+            #E9A72B,
+            #FFCA45
+        );
+
+    transition:
+        width 1.2s var(--ease);
+
+}
+
+
+/* =========================================================
+   BOTÓN TE AMO
+========================================================= */
+
+.button--love {
+
+    min-width: 175px;
+
+    color: var(--white);
+
+    background: var(--green);
+
+    box-shadow:
+        0 12px 25px
+        rgba(40, 77, 54, .18);
+
+}
+
+.button--love:hover {
+
+    background: #356345;
+
+}
+
+.button--love:disabled {
+
+    cursor: default;
+
+    opacity: .8;
+
+}
+
+.growth-hint {
+
+    margin: 13px 0 0;
+
+    color: var(--text-secondary);
+
+    font-size: .8rem;
+
+    font-weight: 600;
+
+}
+
+.button--garden {
+
+    margin-top: 18px;
+
+    color: var(--green);
+
+    background: var(--yellow);
+
+}
+
+
+/* =========================================================
+   ESCENARIO
+========================================================= */
+
+.plant-area {
+
+    position: relative;
+
+    width: 100%;
+
+    min-width: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    aspect-ratio: 5 / 6;
+
+    isolation: isolate;
+
+}
+
+.plant-area__glow {
+
+    position: absolute;
+
+    width: 85%;
+
+    aspect-ratio: 1;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255, 202, 69, .22),
+            transparent 70%
+        );
+
+    z-index: -1;
+
+}
+
+.plant-message {
+
+    position: absolute;
+
+    top: 1%;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: max-content;
+
+    max-width: 95%;
+
+    padding: 10px 17px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 999px;
+
+    color: var(--green);
+
+    background: var(--white);
+
+    box-shadow:
+        0 8px 25px
+        rgba(40, 77, 54, .06);
+
+    font-size: .82rem;
+
+    font-weight: 800;
+
+    text-align: center;
+
+    z-index: 5;
+
+}
+
+.plant-message span {
+
+    margin-right: 5px;
+
+    color: var(--yellow-dark);
+
+}
+
+.plant-svg {
+
+    display: block;
+
+    width: 100%;
+
+    max-width: 500px;
+
+    height: auto;
+
+    overflow: visible;
+
+}
+
+
+/* =========================================================
+   SVG - ESTADOS
+========================================================= */
+
+.svg-hidden {
+
+    opacity: 0;
+
+    visibility: hidden;
+
+}
+
+#seedGroup,
+#sproutGroup,
+#budGroup,
+#flowerGroup,
+.plant-leaf {
+
+    transition:
+        opacity .6s ease,
+        visibility .6s ease;
+
+}
+
+.svg-visible {
+
+    opacity: 1;
+
+    visibility: visible;
+
+}
+
+.main-stem {
+
+    stroke-dasharray: 500;
+
+    stroke-dashoffset: 500;
+
+    transition:
+        stroke-dashoffset
+        1.8s
+        var(--ease);
+
+}
+
+.main-stem.is-grown {
+
+    stroke-dashoffset: 0;
+
+}
+
+
+/* =========================================================
+   FLOR
+========================================================= */
+
+.flower-petal {
+
+    opacity: 0;
+
+    transition:
+        opacity .7s ease;
+
+}
+
+.flower-petal.is-visible {
+
+    opacity: 1;
+
+}
+
+.flower-petal path {
+
+    fill: url(#petalGradient);
+
+}
+
+.flower-petal--back path {
+
+    fill: #E9AD30;
+
+}
+
+#flowerGroup.is-bloomed {
+
+    animation:
+        flowerSway
+        5s
+        ease-in-out
+        2s
+        infinite;
+
+    transform-origin: 250px 155px;
+
+}
+
+@keyframes flowerSway {
+
+    0%,
+    100% {
+
+        transform: rotate(-1deg);
+
+    }
+
+    50% {
+
+        transform: rotate(1deg);
+
+    }
+
+}
+
+
+/* =========================================================
+   JARDÍN
+========================================================= */
+
+.scene--garden {
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 55px 20px;
+
+    background:
+
+        radial-gradient(
+            circle at 50% 15%,
+            #FFF0B3,
+            transparent 55%
+        ),
+
+        var(--cream);
+
+}
+
+.garden-container {
+
+    width: min(1000px, 100%);
+
+    margin: auto;
+
+    text-align: center;
+
+}
+
+.garden-container h2 {
+
+    margin: 15px 0;
+
+    font-family: var(--font-title);
+
+    font-size:
+        clamp(2.5rem, 6vw, 4.5rem);
+
+    font-weight: 500;
+
+    line-height: 1.15;
+
+}
+
+.garden-container h2 span {
+
+    display: block;
+
+    color: var(--green-light);
+
+}
+
+.garden-description {
+
+    max-width: 620px;
+
+    margin: 0 auto;
+
+    color: var(--text-secondary);
+
+    font-size: 1rem;
+
+    font-weight: 600;
+
+    line-height: 1.8;
+
+}
+
+.garden-instruction {
+
+    margin: 18px 0;
+
+    color: var(--green);
+
+    font-size: .85rem;
+
+    font-weight: 800;
+
+}
+
+
+/* FLORES */
+
+.garden-flowers {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: clamp(8px, 2vw, 22px);
+
+    max-width: 850px;
+
+    min-height: 220px;
+
+    margin: 25px auto;
+
+}
+
+.garden-flower {
+
+    width: clamp(68px, 10vw, 105px);
+
+    aspect-ratio: 1;
+
+    display: grid;
+
+    place-items: center;
+
+    padding: 0;
+
+    border: 0;
+
+    border-radius: 50%;
+
+    background: transparent;
+
+    transition:
+        transform .35s var(--ease);
+
+    animation:
+        gardenFlowerEnter
+        .7s
+        var(--ease)
+        both;
+
+    animation-delay: var(--delay);
+
+}
+
+.garden-flower:hover {
+
+    transform: translateY(-8px) scale(1.06);
+
+}
+
+.garden-flower svg {
+
+    display: block;
+
+    width: 100%;
+
+    height: 100%;
+
+    overflow: visible;
+
+}
+
+@keyframes gardenFlowerEnter {
+
+    from {
+
+        opacity: 0;
+
+        scale: .5;
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        scale: 1;
+
+    }
+
+}
+
+
+/* MENSAJE */
+
+.garden-message {
+
+    min-height: 48px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin: 10px auto 25px;
+
+    color: var(--green);
+
+    font-family: var(--font-title);
+
+    font-size:
+        clamp(1.05rem, 3vw, 1.4rem);
+
+    font-weight: 500;
+
+}
+
+.garden-letter-button {
+
+    max-width: 100%;
+
+}
+
+
+/* =========================================================
+   CARTA
+========================================================= */
+
+.letter-modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+    z-index: 100;
+
+}
+
+.letter-modal.open {
+
+    display: flex;
+
+}
+
+.letter-backdrop {
+
+    position: absolute;
+
+    inset: 0;
+
+    background: rgba(25, 45, 31, .75);
+
+    backdrop-filter: blur(8px);
+
+}
+
+.letter {
+
+    position: relative;
+
+    width: min(650px, 100%);
+
+    max-height: calc(100svh - 40px);
+
+    padding:
+        clamp(28px, 5vw, 55px);
+
+    overflow-y: auto;
+
+    overscroll-behavior: contain;
+
+    border-radius: 24px;
+
+    background: var(--white);
+
+    box-shadow:
+        0 25px 80px
+        rgba(0, 0, 0, .2);
+
+    animation:
+        letterEnter
+        .65s
+        var(--ease)
+        both;
+
+}
+
+@keyframes letterEnter {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(25px)
+            scale(.96);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
+.letter-close {
+
+    position: absolute;
+
+    top: 15px;
+
+    right: 15px;
+
+    width: 42px;
+
+    height: 42px;
+
+    border: 0;
+
+    border-radius: 50%;
+
+    color: var(--green);
+
+    background: var(--green-soft);
+
+    font-size: 1.6rem;
+
+}
+
+.letter-icon {
+
+    margin-bottom: 15px;
+
+    font-size: 2.5rem;
+
+}
+
+.letter h2 {
+
+    margin: 15px 0;
+
+    font-family: var(--font-title);
+
+    font-size:
+        clamp(2.3rem, 6vw, 3.8rem);
+
+    font-weight: 500;
+
+    line-height: 1.15;
+
+}
+
+.letter h2 span {
+
+    display: block;
+
+    color: var(--green-light);
+
+}
+
+.letter-divider {
+
+    margin: 25px 0;
+
+    color: var(--yellow-dark);
+
+    font-size: 1.5rem;
+
+}
+
+.letter-content {
+
+    color: var(--text-secondary);
+
+    font-size: 1rem;
+
+    font-weight: 600;
+
+    line-height: 1.9;
+
+}
+
+.letter-content p {
+
+    margin: 0 0 20px;
+
+}
+
+.letter-final {
+
+    color: var(--green);
+
+    font-family: var(--font-title);
+
+    font-size: 1.4rem;
+
+}
+
+.letter-signature {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+
+    margin-top: 30px;
+
+    color: var(--green);
+
+}
+
+.letter-signature strong {
+
+    font-family: var(--font-title);
+
+    font-size: 1.4rem;
+
+}
+
+
+/* =========================================================
+   PÉTALOS
+========================================================= */
+
+.petal-rain {
+
+    position: fixed;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 110;
+
+}
+
+.falling-petal {
+
+    position: absolute;
+
+    top: -30px;
+
+    width: 12px;
+
+    height: 20px;
+
+    border-radius:
+        80% 20% 80% 20%;
+
+    background: var(--yellow);
+
+    animation:
+        petalFall
+        var(--duration)
+        linear
+        forwards;
+
+}
+
+@keyframes petalFall {
+
+    to {
+
+        transform:
+            translate(
+                var(--move-x),
+                110vh
+            )
+            rotate(720deg);
+
+        opacity: 0;
+
+    }
+
+}
+
+
+/* =========================================================
+   TABLETS
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .growth-container {
+
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+
+    }
+
+    .growth-content {
+
+        max-width: 650px;
+
+        margin: 0 auto;
+
+        text-align: center;
+
+    }
+
+    .section-label {
+
+        justify-content: center;
+
+    }
+
+    .growth-title {
+
+        margin: auto;
+
+    }
+
+    .growth-description {
+
+        min-height: 0;
+
+        margin:
+            18px auto
+            20px;
+
+    }
+
+    .stage-card,
+    .progress {
+
+        margin-left: auto;
+
+        margin-right: auto;
+
+    }
+
+    .stage-card {
+
+        text-align: left;
+
+    }
+
+    .plant-area {
+
+        width: min(460px, 100%);
+
+        margin: 0 auto;
+
+    }
+
+}
+
+
+/* =========================================================
+   CELULARES
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .scene--growth {
+
+        align-items: flex-start;
+
+        padding:
+            max(22px, env(safe-area-inset-top))
+            17px
+            max(25px, env(safe-area-inset-bottom));
+
+    }
+
+    .growth-container {
+
+        gap: 10px;
+
+    }
+
+    .section-label {
+
+        margin-bottom: 12px;
+
+        font-size: .61rem;
+
+    }
+
+    .growth-title {
+
+        font-size:
+            clamp(2.25rem, 10vw, 3.3rem);
+
+        line-height: 1.12;
+
+    }
+
+    .growth-description {
+
+        margin:
+            13px auto
+            15px;
+
+        font-size: .85rem;
+
+        line-height: 1.6;
+
+    }
+
+    .stage-card {
+
+        gap: 11px;
+
+        padding: 12px;
+
+        border-radius: 14px;
+
+    }
+
+    .stage-card__icon {
+
+        width: 40px;
+
+        height: 40px;
+
+        font-size: 1.4rem;
+
+    }
+
+    .stage-card__content p {
+
+        font-size: .82rem;
+
+    }
+
+    .progress {
+
+        margin-top: 16px;
+
+        margin-bottom: 16px;
+
+    }
+
+    .progress__header {
+
+        font-size: .72rem;
+
+    }
+
+    .button--love {
+
+        min-height: 50px;
+
+    }
+
+    .growth-hint {
+
+        margin-top: 9px;
+
+        font-size: .74rem;
+
+    }
+
+    .plant-area {
+
+        width: min(350px, 100%);
+
+        margin-top: 5px;
+
+    }
+
+    .plant-message {
+
+        top: 0;
+
+        padding: 8px 12px;
+
+        font-size: .7rem;
+
+    }
+
+    .scene--garden {
+
+        padding: 35px 17px;
+
+    }
+
+    .garden-description {
+
+        font-size: .87rem;
+
+    }
+
+    .garden-flowers {
+
+        gap: 5px;
+
+        min-height: 180px;
+
+        margin: 15px auto;
+
+    }
+
+    .garden-flower {
+
+        width: clamp(65px, 19vw, 90px);
+
+    }
+
+    .letter {
+
+        padding: 40px 24px;
+
+        border-radius: 18px;
+
+    }
+
+    .letter-content {
+
+        font-size: .91rem;
+
+        line-height: 1.8;
+
+    }
+
+}
+
+
+/* =========================================================
+   PANTALLAS DE POCA ALTURA
+========================================================= */
+
+@media (max-width: 600px) and (max-height: 700px) {
+
+    .growth-title {
+
+        font-size: 2.2rem;
+
+    }
+
+    .growth-description {
+
+        font-size: .8rem;
+
+    }
+
+    .plant-area {
+
+        width: min(290px, 85%);
+
+    }
+
+}
+
+
+/* =========================================================
+   ACCESIBILIDAD
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration: .01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        transition-duration: .01ms !important;
+
+    }
+
+}

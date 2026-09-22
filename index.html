@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#FFF9ED"
+    >
+
+    <meta
+        name="description"
+        content="Un pequeño jardín de flores amarillas creado especialmente para ti."
+    >
+
+    <title>Para mi flor favorita 🌻</title>
+
+    <!-- GOOGLE FONTS -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght,SOFT,WONK@9..144,400,50,1;9..144,500,50,1;9..144,600,50,1&family=Nunito:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <script
+        src="app.js"
+        defer
+    ></script>
+
+</head>
+
+<body>
+
+    <!-- DECORACIÓN GLOBAL -->
+
+    <div
+        class="ambient-particles"
+        id="ambientParticles"
+        aria-hidden="true"
+    ></div>
+
+
+    <main>
+
+        <!-- =====================================
+             ESCENA 1: BIENVENIDA
+        ====================================== -->
+
+        <section
+            class="scene scene--welcome active"
+            id="welcomeScene"
+        >
+
+            <div class="welcome-card">
+
+                <div class="welcome-icon">
+                    🌻
+                </div>
+
+                <span class="eyebrow">
+                    21 DE SEPTIEMBRE
+                </span>
+
+                <h1>
+                    Hola, mi amor.
+                    <span>
+                        Tengo algo para ti.
+                    </span>
+                </h1>
+
+                <p class="welcome-description">
+
+                    Hoy quería regalarte flores amarillas,
+                    pero pensé que podía hacer algo
+                    un poquito más especial.
+
+                    <br><br>
+
+                    Algo hecho por mí, para ti.
+                    Un pequeño jardín que nunca se marchite.
+
+                </p>
+
+                <button
+                    class="button button--primary"
+                    id="startButton"
+                    type="button"
+                >
+
+                    Comenzar nuestra historia
+
+                    <span aria-hidden="true">
+                        ♡
+                    </span>
+
+                </button>
+
+                <p class="welcome-signature">
+                    Hecho con mucho amor, especialmente para ti.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             ESCENA 2: CRECIMIENTO
+        ====================================== -->
+
+        <section
+            class="scene scene--growth"
+            id="growthScene"
+        >
+
+            <div class="growth-container">
+
+                <!-- TEXTO -->
+
+                <div class="growth-content">
+
+                    <div class="section-label">
+
+                        <span class="section-label__line"></span>
+
+                        NUESTRO PEQUEÑO JARDÍN
+
+                    </div>
+
+
+                    <h2 class="growth-title">
+
+                        Todo lo bonito
+
+                        <span>
+                            comienza con amor.
+                        </span>
+
+                    </h2>
+
+
+                    <p
+                        class="growth-description"
+                        id="growthDescription"
+                        aria-live="polite"
+                    >
+
+                        Nuestro amor también comenzó así:
+                        con algo pequeño que, sin darnos cuenta,
+                        empezó a convertirse en algo maravilloso.
+
+                        Ahora ayúdame a hacer crecer
+                        algo especial para ti.
+
+                    </p>
+
+
+                    <!-- MENSAJE DE ETAPA -->
+
+                    <div class="stage-card">
+
+                        <div class="stage-card__icon">
+                            ♡
+                        </div>
+
+                        <div class="stage-card__content">
+
+                            <span class="stage-card__label">
+
+                                ETAPA
+
+                                <span id="stageNumber">0</span>
+
+                                DE 5
+
+                            </span>
+
+                            <p
+                                id="stageMessage"
+                                aria-live="polite"
+                            >
+                                Una pequeña semilla espera tu amor.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PROGRESO -->
+
+                    <div class="progress">
+
+                        <div class="progress__header">
+
+                            <span>
+                                Nuestro amor está creciendo
+                            </span>
+
+                            <strong id="progressText">
+                                0%
+                            </strong>
+
+                        </div>
+
+                        <div
+                            class="progress__track"
+                            id="progressBar"
+                            role="progressbar"
+                            aria-label="Progreso de crecimiento del girasol"
+                            aria-valuemin="0"
+                            aria-valuemax="100"
+                            aria-valuenow="0"
+                        >
+
+                            <div
+                                class="progress__fill"
+                                id="progressFill"
+                            ></div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- BOTÓN -->
+
+                    <button
+                        class="button button--love"
+                        id="loveButton"
+                        type="button"
+                    >
+
+                        <span aria-hidden="true">
+                            ♡
+                        </span>
+
+                        Te amo
+
+                    </button>
+
+
+                    <p class="growth-hint">
+
+                        Cada «Te amo» hará crecer
+                        un poquito más nuestra flor.
+
+                    </p>
+
+
+                    <!-- BOTÓN FINAL -->
+
+                    <button
+                        class="button button--garden hidden"
+                        id="gardenButton"
+                        type="button"
+                    >
+
+                        Descubrir tu jardín
+
+                        <span aria-hidden="true">
+                            →
+                        </span>
+
+                    </button>
+
+                </div>
+
+
+                <!-- =================================
+                     ESCENARIO DE LA PLANTA
+                ================================== -->
+
+                <div class="plant-area">
+
+                    <div class="plant-area__glow"></div>
+
+
+                    <div
+                        class="plant-message"
+                        id="plantMessage"
+                    >
+
+                        <span>♡</span>
+
+                        Toca «Te amo» para comenzar
+
+                    </div>
+
+
+                    <!-- SVG PRINCIPAL -->
+
+                    <svg
+                        class="plant-svg"
+                        id="plantSvg"
+                        viewBox="0 0 500 600"
+                        role="img"
+                        aria-label="Una pequeña semilla que se convertirá en un girasol amarillo"
+                    >
+
+                        <defs>
+
+                            <!-- TALLO -->
+
+                            <linearGradient
+                                id="stemGradient"
+                                x1="0%"
+                                y1="0%"
+                                x2="100%"
+                                y2="0%"
+                            >
+
+                                <stop
+                                    offset="0%"
+                                    stop-color="#31583C"
+                                />
+
+                                <stop
+                                    offset="50%"
+                                    stop-color="#668D56"
+                                />
+
+                                <stop
+                                    offset="100%"
+                                    stop-color="#31583C"
+                                />
+
+                            </linearGradient>
+
+
+                            <!-- HOJAS -->
+
+                            <linearGradient
+                                id="leafGradient"
+                                x1="0%"
+                                y1="0%"
+                                x2="100%"
+                                y2="100%"
+                            >
+
+                                <stop
+                                    offset="0%"
+                                    stop-color="#85A96C"
+                                />
+
+                                <stop
+                                    offset="55%"
+                                    stop-color="#4E7A4B"
+                                />
+
+                                <stop
+                                    offset="100%"
+                                    stop-color="#315A3D"
+                                />
+
+                            </linearGradient>
+
+
+                            <!-- PÉTALOS -->
+
+                            <linearGradient
+                                id="petalGradient"
+                                x1="0%"
+                                y1="0%"
+                                x2="100%"
+                                y2="100%"
+                            >
+
+                                <stop
+                                    offset="0%"
+                                    stop-color="#FFE887"
+                                />
+
+                                <stop
+                                    offset="48%"
+                                    stop-color="#FFCA45"
+                                />
+
+                                <stop
+                                    offset="100%"
+                                    stop-color="#E9A72B"
+                                />
+
+                            </linearGradient>
+
+
+                            <!-- CENTRO -->
+
+                            <radialGradient
+                                id="centerGradient"
+                            >
+
+                                <stop
+                                    offset="0%"
+                                    stop-color="#78502C"
+                                />
+
+                                <stop
+                                    offset="65%"
+                                    stop-color="#51331F"
+                                />
+
+                                <stop
+                                    offset="100%"
+                                    stop-color="#302018"
+                                />
+
+                            </radialGradient>
+
+
+                            <!-- TIERRA -->
+
+                            <radialGradient
+                                id="soilGradient"
+                            >
+
+                                <stop
+                                    offset="0%"
+                                    stop-color="#8C6346"
+                                />
+
+                                <stop
+                                    offset="100%"
+                                    stop-color="#50372A"
+                                />
+
+                            </radialGradient>
+
+                        </defs>
+
+
+                        <!-- TIERRA -->
+
+                        <g id="soilGroup">
+
+                            <ellipse
+                                cx="250"
+                                cy="557"
+                                rx="105"
+                                ry="17"
+                                fill="#38533B"
+                                opacity=".12"
+                            />
+
+                            <ellipse
+                                cx="250"
+                                cy="545"
+                                rx="92"
+                                ry="22"
+                                fill="url(#soilGradient)"
+                            />
+
+                            <ellipse
+                                cx="250"
+                                cy="539"
+                                rx="72"
+                                ry="12"
+                                fill="#A27B58"
+                                opacity=".25"
+                            />
+
+                        </g>
+
+
+                        <!-- SEMILLA -->
+
+                        <g id="seedGroup">
+
+                            <ellipse
+                                cx="250"
+                                cy="530"
+                                rx="7"
+                                ry="12"
+                                fill="#69452F"
+                            />
+
+                        </g>
+
+
+                        <!-- BROTE -->
+
+                        <g
+                            id="sproutGroup"
+                            class="svg-hidden"
+                        >
+
+                            <path
+                                d="
+                                    M250 540
+                                    Q247 515
+                                    250 491
+                                "
+                                fill="none"
+                                stroke="#4E7A4B"
+                                stroke-width="7"
+                                stroke-linecap="round"
+                            />
+
+                            <path
+                                d="
+                                    M250 505
+                                    Q223 479
+                                    205 493
+                                    Q220 514
+                                    250 511
+                                    Z
+                                "
+                                fill="url(#leafGradient)"
+                            />
+
+                            <path
+                                d="
+                                    M250 495
+                                    Q274 473
+                                    292 487
+                                    Q278 508
+                                    250 502
+                                    Z
+                                "
+                                fill="url(#leafGradient)"
+                            />
+
+                        </g>
+
+
+                        <!-- TALLO PRINCIPAL -->
+
+                        <path
+                            id="mainStem"
+                            class="main-stem"
+                            d="
+                                M250 540
+                                C246 485 257 450 249 405
+                                C240 357 258 315 250 270
+                                C244 232 253 197 250 165
+                            "
+                            fill="none"
+                            stroke="url(#stemGradient)"
+                            stroke-width="11"
+                            stroke-linecap="round"
+                        />
+
+
+                        <!-- HOJA IZQUIERDA -->
+
+                        <g
+                            id="leftLeaf"
+                            class="plant-leaf svg-hidden"
+                        >
+
+                            <path
+                                d="
+                                    M249 410
+                                    C211 373 163 373 126 395
+                                    C151 435 199 453 249 421
+                                    Z
+                                "
+                                fill="url(#leafGradient)"
+                            />
+
+                            <path
+                                d="
+                                    M245 418
+                                    Q185 402
+                                    138 396
+                                "
+                                fill="none"
+                                stroke="#B8D3A2"
+                                stroke-width="2"
+                                opacity=".65"
+                            />
+
+                        </g>
+
+
+                        <!-- HOJA DERECHA -->
+
+                        <g
+                            id="rightLeaf"
+                            class="plant-leaf svg-hidden"
+                        >
+
+                            <path
+                                d="
+                                    M250 345
+                                    C287 305 340 304 377 326
+                                    C352 368 299 384 250 356
+                                    Z
+                                "
+                                fill="url(#leafGradient)"
+                            />
+
+                            <path
+                                d="
+                                    M255 351
+                                    Q315 332
+                                    365 326
+                                "
+                                fill="none"
+                                stroke="#B8D3A2"
+                                stroke-width="2"
+                                opacity=".65"
+                            />
+
+                        </g>
+
+
+                        <!-- CAPULLO -->
+
+                        <g
+                            id="budGroup"
+                            class="svg-hidden"
+                        >
+
+                            <path
+                                d="
+                                    M250 210
+                                    C220 198 207 170 220 140
+                                    Q250 150 250 210
+                                    Z
+                                "
+                                fill="#416D45"
+                            />
+
+                            <path
+                                d="
+                                    M250 210
+                                    C280 198 293 170 280 140
+                                    Q250 150 250 210
+                                    Z
+                                "
+                                fill="#416D45"
+                            />
+
+                            <ellipse
+                                cx="250"
+                                cy="155"
+                                rx="42"
+                                ry="50"
+                                fill="url(#leafGradient)"
+                            />
+
+                        </g>
+
+
+                        <!-- =================================
+                             FLOR
+
+                             Los pétalos se generan mediante
+                             JavaScript para mantener fija
+                             su posición y rotación.
+                        ================================== -->
+
+                        <g
+                            id="flowerGroup"
+                            class="svg-hidden"
+                        >
+
+                            <g id="backPetals"></g>
+
+                            <g id="frontPetals"></g>
+
+
+                            <!-- CENTRO -->
+
+                            <circle
+                                cx="250"
+                                cy="155"
+                                r="55"
+                                fill="url(#centerGradient)"
+                            />
+
+                            <circle
+                                cx="250"
+                                cy="155"
+                                r="43"
+                                fill="none"
+                                stroke="#A77A43"
+                                stroke-width="2"
+                                opacity=".4"
+                            />
+
+
+                            <!-- SEMILLAS DEL CENTRO -->
+
+                            <g id="flowerSeeds"></g>
+
+                        </g>
+
+                    </svg>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             ESCENA 3: JARDÍN
+        ====================================== -->
+
+        <section
+            class="scene scene--garden"
+            id="gardenScene"
+        >
+
+            <div class="garden-container">
+
+                <span class="eyebrow">
+                    UN JARDÍN SOLO PARA TI
+                </span>
+
+                <h2>
+
+                    Este jardín es para ti,
+
+                    <span>mi amor.</span>
+
+                </h2>
+
+
+                <p class="garden-description">
+
+                    Si pudiera regalarte una flor
+                    por cada vez que pienso en ti,
+                    no existiría un jardín
+                    suficientemente grande para contenerlas todas.
+
+                </p>
+
+
+                <p class="garden-instruction">
+
+                    Toca las flores y descubre
+                    lo que quiero decirte.
+
+                </p>
+
+
+                <!-- FLORES GENERADAS CON JS -->
+
+                <div
+                    class="garden-flowers"
+                    id="gardenFlowers"
+                ></div>
+
+
+                <!-- MENSAJE -->
+
+                <div
+                    class="garden-message"
+                    id="gardenMessage"
+                    role="status"
+                    aria-live="polite"
+                ></div>
+
+
+                <!-- CARTA -->
+
+                <button
+                    class="button button--primary garden-letter-button"
+                    id="letterButton"
+                    type="button"
+                >
+
+                    Tengo una última sorpresa
+
+                    <span aria-hidden="true">
+                        ♡
+                    </span>
+
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =====================================
+         CARTA ROMÁNTICA
+    ====================================== -->
+
+    <div
+        class="letter-modal"
+        id="letterModal"
+        aria-hidden="true"
+    >
+
+        <div
+            class="letter-backdrop"
+            id="letterBackdrop"
+        ></div>
+
+
+        <article
+            class="letter"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="letterTitle"
+        >
+
+            <button
+                class="letter-close"
+                id="letterClose"
+                type="button"
+                aria-label="Cerrar carta"
+            >
+                ×
+            </button>
+
+
+            <div class="letter-icon">
+                🌻
+            </div>
+
+
+            <span class="eyebrow">
+                21 DE SEPTIEMBRE
+            </span>
+
+
+            <h2 id="letterTitle">
+
+                Para ti,
+
+                <span>
+                    mi flor favorita.
+                </span>
+
+            </h2>
+
+
+            <div class="letter-divider">
+                ♡
+            </div>
+
+
+            <div class="letter-content">
+
+                <p>
+                    Mi amor:
+                </p>
+
+                <p>
+
+                    Hoy es el Día de las Flores Amarillas
+                    y quería regalarte algo que fuera
+                    tan especial como tú.
+
+                </p>
+
+                <p>
+
+                    Quería hacer
+                    algo diferente.
+
+                    Algo que llevara un poquito de mí,
+                    de lo que soy y de todo el amor
+                    que siento por ti.
+
+                </p>
+
+                <p>
+
+                    Por eso decidí crear este pequeño detalle.
+
+                </p>
+
+                <p>
+
+                    Cada flor que ves aquí representa
+                    una sonrisa que me has regalado,
+                    un abrazo que quisiera guardar para siempre
+                    y todos esos pequeños momentos que hacen
+                    mi vida mucho más bonita desde que estás en ella.
+
+                </p>
+
+                <p>
+
+                    Así como hiciste crecer ese pequeño girasol,
+                    tú también has hecho florecer muchas
+                    cosas bonitas dentro de mí.
+
+                </p>
+
+                <p>
+
+                    Gracias por compartir tus días conmigo,
+                    por acompañarme, por hacerme reír
+                    y por ser esa personita que logra convertir
+                    hasta un día cualquiera en uno especial.
+
+                </p>
+
+                <p>
+
+                    Quiero seguir construyendo recuerdos contigo,
+                    seguir viviendo nuevas primaveras a tu lado
+                    y encontrar siempre nuevas maneras
+                    de recordarte lo importante que eres para mí.
+
+                </p>
+
+                <p>
+
+                    Las flores de verdad algún día se marchitan.
+
+                    Este pequeño jardín, en cambio,
+                    siempre estará aquí para recordarte
+                    cuánto te amo.
+
+                </p>
+
+                <p class="letter-final">
+
+                    Feliz Día de las Flores Amarillas,
+                    mi amor.
+
+                </p>
+
+            </div>
+
+
+            <div class="letter-signature">
+
+                <span>
+                    Con todo mi amor,
+                </span>
+
+                <strong>
+                    Gabriel♡
+                </strong>
+
+            </div>
+
+        </article>
+
+    </div>
+
+
+    <!-- PÉTALOS DE CELEBRACIÓN -->
+
+    <div
+        class="petal-rain"
+        id="petalRain"
+        aria-hidden="true"
+    ></div>
+
+</body>
+
+</html>
